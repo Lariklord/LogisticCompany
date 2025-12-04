@@ -12,19 +12,23 @@ namespace LogisticBackend.Data.Database.Configurations
 
             builder.HasMany(x => x.Trips)
                 .WithOne(x => x.Vehicle)
-                .HasForeignKey(x => x.VehicleId);
+                .HasForeignKey(x => x.VehicleId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(x => x.Expenses)
                .WithOne(x => x.Vehicle)
-               .HasForeignKey(x => x.VehicleId);
+               .HasForeignKey(x => x.VehicleId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(x => x.Maintenances)
               .WithOne(x => x.Vehicle)
-              .HasForeignKey(x => x.VehicleId);
+              .HasForeignKey(x => x.VehicleId)
+              .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(x => x.FuelTransactions)
               .WithOne(x => x.Vehicle)
-              .HasForeignKey(x => x.VehicleId);
+              .HasForeignKey(x => x.VehicleId)
+              .OnDelete(DeleteBehavior.Restrict); ;
 
             builder.Property(x => x.Model)
                 .IsRequired();

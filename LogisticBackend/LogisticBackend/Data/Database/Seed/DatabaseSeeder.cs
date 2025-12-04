@@ -21,7 +21,7 @@ namespace LogisticBackend.Data.Database.Seed
                     FuelType = "Diesel",
                     InitialCost = 90000,
                     CurrentBookValue = 70000,
-                    Status = VehicleStatus.Inactive,
+                    Status = VehicleStatus.Active,
                     Mileage = 150000
                 },
                 new Vehicle
@@ -47,7 +47,7 @@ namespace LogisticBackend.Data.Database.Seed
                     Id = 1,
                     FullName = "Иванов Иван Иванович",
                     Phone = "+375291234567",
-                    ExperienceStart = new DateTime(2015, 5, 10),
+                    ExperienceStart = new DateTime(2015, 5, 10).ToUniversalTime(),
                     IsActive = true
                 },
                 new Driver
@@ -55,7 +55,7 @@ namespace LogisticBackend.Data.Database.Seed
                     Id = 2,
                     FullName = "Петров Петр Петрович",
                     Phone = "+375441234567",
-                    ExperienceStart = new DateTime(2018, 3, 22),
+                    ExperienceStart = new DateTime(2018, 3, 22).ToUniversalTime(),
                     IsActive = true
                 }
             );
@@ -66,7 +66,7 @@ namespace LogisticBackend.Data.Database.Seed
                     Id = 1,
                     VehicleId = 1,
                     MileageAtExpense = 150500,
-                    Date = new DateTime(2024, 1, 10),
+                    Date = new DateTime(2024, 1, 10).ToUniversalTime(),
                     Amount = 350m,
                     Description = "Замена масла"
                 },
@@ -75,7 +75,7 @@ namespace LogisticBackend.Data.Database.Seed
                     Id = 2,
                     VehicleId = 2,
                     MileageAtExpense = 121000,
-                    Date = new DateTime(2024, 1, 15),
+                    Date = new DateTime(2024, 1, 15).ToUniversalTime(),
                     Amount = 500m,
                     Description = "Техническое обслуживание"
                 }
@@ -86,7 +86,7 @@ namespace LogisticBackend.Data.Database.Seed
                 {
                     Id = 1,
                     VehicleId = 1,
-                    Date = new DateTime(2024, 2, 5),
+                    Date = new DateTime(2024, 2, 5).ToUniversalTime(),
                     Mileage = 151000,
                     IsCompleted = true,
                     IntervalMileage = 15000,
@@ -98,7 +98,7 @@ namespace LogisticBackend.Data.Database.Seed
                 {
                     Id = 2,
                     VehicleId = 2,
-                    Date = new DateTime(2024, 2, 10),
+                    Date = new DateTime(2024, 2, 10).ToUniversalTime(),
                     Mileage = 121500,
                     IsCompleted = true,
                     IntervalMileage = 20000,
@@ -114,7 +114,7 @@ namespace LogisticBackend.Data.Database.Seed
                     Id = 1,
                     VehicleId = 1,
                     DriverId = 1,
-                    Date = new DateTime(2024, 1, 12),
+                    Date = new DateTime(2024, 1, 12).ToUniversalTime(),
                     Liters = 150,
                     PricePerLiter = 2.1m
                 },
@@ -123,7 +123,7 @@ namespace LogisticBackend.Data.Database.Seed
                     Id = 2,
                     VehicleId = 2,
                     DriverId = 2,
-                    Date = new DateTime(2024, 1, 20),
+                    Date = new DateTime(2024, 1, 20).ToUniversalTime(),
                     Liters = 180,
                     PricePerLiter = 2.05m
                 }
@@ -136,15 +136,13 @@ namespace LogisticBackend.Data.Database.Seed
                     Number = "TRIP-001",
                     VehicleId = 1,
                     DriverId = 1,
-                    StartDateTime = new DateTime(2024, 1, 5, 8, 0, 0),
-                    EndDateTime = new DateTime(2024, 1, 6, 18, 0, 0),
+                    StartDateTime = new DateTime(2025, 12, 3, 8, 0, 0).ToUniversalTime(),
                     StartMileage = 150000,
-                    EndMileage = 150450,
                     CargoDescription = "Молочная продукция",
                     CargoWeight = 5000,
-                    FuelSpent = 120,
                     Route = "Минск — Брест",
-                    Notes = "Без происшествий"
+                    Notes = "Без происшествий",
+                    Status = TripStatus.InProgress
                 },
                 new Trip
                 {
@@ -152,8 +150,8 @@ namespace LogisticBackend.Data.Database.Seed
                     Number = "TRIP-002",
                     VehicleId = 2,
                     DriverId = 2,
-                    StartDateTime = new DateTime(2024, 1, 7, 7, 0, 0),
-                    EndDateTime = new DateTime(2024, 1, 7, 22, 0, 0),
+                    StartDateTime = new DateTime(2024, 1, 7, 7, 0, 0).ToUniversalTime(),
+                    EndDateTime = new DateTime(2024, 1, 7, 22, 0, 0).ToUniversalTime(),
                     StartMileage = 120000,
                     EndMileage = 120380,
                     CargoDescription = "Мясная продукция",
@@ -161,6 +159,7 @@ namespace LogisticBackend.Data.Database.Seed
                     FuelSpent = 90,
                     Route = "Минск — Гродно",
                     Notes = "",
+                    Status = TripStatus.Completed
                 }
             );
         }

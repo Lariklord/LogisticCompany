@@ -33,15 +33,6 @@ namespace LogisticBackend.Data.Database.Configurations
             builder.Property(x => x.CargoWeight)
                 .IsRequired();
 
-            builder.Property(x => x.EndDateTime)
-                .IsRequired();
-
-            builder.Property(x => x.EndMileage)
-                .IsRequired();
-
-            builder.Property(x => x.FuelSpent)
-                .IsRequired();
-
             builder.Property(x => x.Route)
                 .IsRequired();
 

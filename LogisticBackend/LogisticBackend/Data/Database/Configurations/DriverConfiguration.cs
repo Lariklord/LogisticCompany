@@ -14,12 +14,12 @@ namespace LogisticBackend.Data.Database.Configurations
             builder.HasMany(x => x.Trips)
                 .WithOne(x => x.Driver)
                 .HasForeignKey(x => x.DriverId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(x => x.FuelTransactions)
                 .WithOne(x => x.Driver)
                 .HasForeignKey(x => x.DriverId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder.Property(x => x.FullName)
                 .IsRequired()
